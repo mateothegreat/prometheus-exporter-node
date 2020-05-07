@@ -5,7 +5,7 @@ Requires=network.target
 
 [Service]
 Type=simple
-ExecStart={{ prometheus_exporter_node.install_path | default('/usr/local/bin') }}/{{ prometheus_exporter_node.install_binary_name | default('prometheus-exporter-node') }} --collector.cpu --collector.filesystem --collector.loadavg --collector.meminfo --collector.netstat --collector.tcpstat
+ExecStart={{ prometheus_exporter_node.install_path | default('/usr/local/bin') }}/{{ prometheus_exporter_node.install_binary_name | default('prometheus-exporter-node') }} --web.listen-address={{ prometheus_exporter_node.listen_address | default('0.0.0.0:9100') }} --collector.cpu --collector.filesystem --collector.loadavg --collector.meminfo --collector.netstat --collector.tcpstat
 User={{ prometheus_exporter_node.user | default('exporters') }}
 Group={{ prometheus_exporter_node.group | default('exporters') }}
 
