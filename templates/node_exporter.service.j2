@@ -1,0 +1,13 @@
+[Unit]
+Description=Node Exporter
+After=network.target
+Requires=network.target
+
+[Service]
+Type=simple
+ExecStart={{ prometheus_exporter_node.install_path }}/{{ prometheus_exporter_node.install_binary_name }} --collector.cpu --collector.filesystem --collector.loadavg --collector.meminfo --collector.netstat --collector.tcpstat
+User={{ prometheus_exporter_node.user }}
+Group={{ prometheus_exporter_node.group }}
+
+[Install]
+WantedBy=multi-user.target

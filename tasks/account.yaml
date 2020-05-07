@@ -1,0 +1,13 @@
+---
+- name: "Create group ({{ prometheus_exporter_node.group }})"
+  become: "true"
+  group:
+    name: "{{ prometheus_exporter_node.group }}"
+
+- name: "Create user ({{ prometheus_exporter_node.user }})"
+  become: "true"
+  user:
+    name: "{{ prometheus_exporter_node.user }}"
+    create_home: "no"
+    group: "{{ prometheus_exporter_node.group }}"
+    shell: "/bin/false"

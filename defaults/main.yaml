@@ -1,0 +1,7 @@
+prometheus_exporter_node:
+  version: "0.18.1"
+  user: "exporters"
+  group: "exporters"
+  install_path: "/usr/local/bin"
+  install_binary_name: "prometheus-exporter-node"
+  listen_address: "0.0.0.0:9100"

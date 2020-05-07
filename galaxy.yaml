@@ -1,0 +1,13 @@
+namespace: mateothegreat
+name: prometheus-exporter-node
+version: 0.0.1
+readme: README.md
+authors:
+  - Matthew Davis (https://matthewdavis.io)
+description: "Install & configure the prometheus node exporter."
+license: ["MIT"]
+license_file: COPYING
+tags: ["monitoring", "prometheus", "exporter", "node"]
+repository: https://github.com/mateothegreat/prometheus-exporter-node.git
+homepage: https://github.com/mateothegreat/prometheus-exporter-node
+issues: https://github.com/mateothegreat/prometheus-exporter-node/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc
