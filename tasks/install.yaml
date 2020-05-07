@@ -1,14 +1,14 @@
 - name: "Download & unpack prometheus"
   unarchive:
-    src: "https://github.com/prometheus/node_exporter/releases/download/v{{ prometheus_exporter_node.version }}/node_exporter-{{ prometheus_exporter_node.version }}.linux-amd64.tar.gz"
+    src: "https://github.com/prometheus/node_exporter/releases/download/v{{ prometheus_exporter_node.version | default('0.18.1') }}/node_exporter-{{ prometheus_exporter_node.version | default('0.18.1') }}.linux-amd64.tar.gz"
     dest: "/tmp"
     remote_src: "yes"
 
 - name: "Install node_exporter binary"
   become: "true"
   copy:
-    src: "/tmp/node_exporter-{{ prometheus_exporter_node.version }}.linux-amd64/node_exporter"
-    dest: "{{ prometheus_exporter_node.install_path }}/{{ prometheus_exporter_node.install_binary_name }}"
+    src: "/tmp/node_exporter-{{ prometheus_exporter_node.version | default('0.18.1') }}.linux-amd64/node_exporter"
+    dest: "{{ prometheus_exporter_node.install_path | default('/usr/local/bin') }}/{{ prometheus_exporter_node.install_binary_name | default('prometheus-exporter-node') }}"
     mode: "0555"
     remote_src: "yes"
 
@@ -32,4 +32,4 @@
     path: "{{ item }}"
     state: "absent"
   loop:
-    - "/tmp/node_exporter-{{ prometheus_exporter_node.version }}.linux-amd64"
+    - "/tmp/node_exporter-{{ prometheus_exporter_node.version | default('0.18.1') }}.linux-amd64"

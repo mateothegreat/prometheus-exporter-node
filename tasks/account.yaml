@@ -1,13 +1,13 @@
 ---
-- name: "Create group ({{ prometheus_exporter_node.group }})"
+- name: "Create group ({{ prometheus_exporter_node.group | default('exporters') }})"
   become: "true"
   group:
-    name: "{{ prometheus_exporter_node.group }}"
+    name: "{{ prometheus_exporter_node.group | default('exporters') }}"
 
-- name: "Create user ({{ prometheus_exporter_node.user }})"
+- name: "Create user ({{ prometheus_exporter_node.user | default('exporters') }})"
   become: "true"
   user:
-    name: "{{ prometheus_exporter_node.user }}"
+    name: "{{ prometheus_exporter_node.user | default('exporters') }}"
     create_home: "no"
-    group: "{{ prometheus_exporter_node.group }}"
+    group: "{{ prometheus_exporter_node.group | default('exporters') }}"
     shell: "/bin/false"
